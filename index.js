@@ -24,5 +24,4 @@ app.use("/news", async (req, res) => {
   const items = xmlJson.rss.channel.item;
   res.json(items);
 });
-app.get(/.*/, (req, res) => res.sendFile(__dirname + "index.html"));
 app.listen(5000, () => console.log("Server started"));
