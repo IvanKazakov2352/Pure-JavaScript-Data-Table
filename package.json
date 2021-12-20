@@ -1,0 +1,27 @@
+{
+  "name": "test-app",
+  "version": "1.0.0",
+  "description": "test-app",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "keywords": [
+    "js",
+    "node",
+    "html"
+  ],
+  "author": "IvanKazakov <kazakov3344@mail.ru>",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "body-parser": "^1.19.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.2",
+    "xml-js": "^1.6.11"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
