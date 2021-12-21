@@ -92,8 +92,9 @@ class Posts {
         buttonReload.classList.remove("display");
       }
 
-      const data = await response.json();
-      this.posts = data;
+      this.posts = await response.json();
+
+      this.iterationAnPosts()
     }
   }
 
