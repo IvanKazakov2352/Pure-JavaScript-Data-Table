@@ -72,7 +72,7 @@ table tr:hover {
 }
 table tr:active {
   color: aliceblue;
-  background-color: #505050; /*Цвет строки при клике мышкой*/
+  background-color: #9c9c9c; /*Цвет строки при клике мышкой*/
 }
 .table-list {
   display: flex;
@@ -248,4 +248,21 @@ table tr:active {
 }
 .display {
   display: none;
+}
+.button-reload {
+  min-width: 200px;
+  max-width: 300px;
+  min-height: 60px;
+  background-color:#5cb85c;
+  text-align: center;
+  color: #ffffff;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: medium;
+  font-weight: 600;
+  border-radius: 20px;
+}
+.button-reload:hover {
+  background-color:#7aff7a;
+  color: #888;
+  cursor: pointer;
 }
