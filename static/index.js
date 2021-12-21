@@ -20,7 +20,7 @@ class Posts {
   async getPosts() {
     buttonReload.classList.add("display");
 
-    const response = await fetch("http://localhost:5000/news/", {
+    const response = await fetch("/news", {
       method: "GET",
     });
 

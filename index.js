@@ -6,6 +6,7 @@ import path from "path";
 
 const app = express();
 const __dirname = path.resolve();
+const url = "https://lenta.ru/rss/last24"
 
 app.use(express.json());
 app.use(bodyParser.json({ extended: true }));
@@ -15,7 +16,7 @@ app.use(express.static(path.resolve(__dirname, 'static')))
 app.use("/news", async (req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Headers", "origin, content-type, accept");
-  const response = await axios.get("https://lenta.ru/rss/last24");
+  const response = await axios.get(url);
   const xml = convert.xml2json(response.data, {
     compact: true,
     spaces: 4,
