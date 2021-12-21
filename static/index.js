@@ -75,7 +75,7 @@ class Posts {
     table.classList.add("table-body");
     preloader.classList.remove("hide");
 
-    const response = await fetch("http://localhost:5000/news/", {
+    const response = await fetch("/news", {
       method: "GET",
     });
 
@@ -93,8 +93,23 @@ class Posts {
       }
 
       this.posts = await response.json();
-
-      this.iterationAnPosts()
+      while (tableBody.firstChild) {
+        tableBody.removeChild(tableBody.firstChild);
+      }
+      this.posts.forEach((post) => {
+        Object.assign(post, { id: this.elemID++ });
+        tableBody.insertAdjacentHTML(
+          "beforeend", `
+            <tr id="${post.id}">
+              <td>${post.title._text}</td>
+              <td>${post.description?._cdata ? post.description?._cdata : "Описания для поста нет"}</td>
+              <td><a href="${post.link._text}" target="_blank">${post.link._text}</a></td>
+              <td>${new Date(post.pubDate._text).toLocaleString()}</td>
+              <td><img src="${post.enclosure._attributes.url}" class="table-image"></td>
+            </tr>
+          `
+        );
+      });
     }
   }
 
@@ -102,7 +117,7 @@ class Posts {
     while (tableBody.firstChild) {
       tableBody.removeChild(tableBody.firstChild);
     }
-    return this.posts.forEach((post) => {
+    this.posts.forEach((post) => {
 
       tableBody.insertAdjacentHTML(
         "beforeend", `
@@ -139,7 +154,23 @@ class Posts {
       }
       this.posts = [...this.posts].sort((a, b) => a.title._text.toLowerCase() > b.title._text.toLowerCase() ? -1 : 1);
     }
-    this.iterationAnPosts();
+    while (tableBody.firstChild) {
+      tableBody.removeChild(tableBody.firstChild);
+    }
+    this.posts.forEach((post) => {
+
+      tableBody.insertAdjacentHTML(
+        "beforeend", `
+          <tr id="${post.id}">
+            <td>${post.title._text}</td>
+            <td>${post.description?._cdata ? post.description?._cdata : "Описания для поста нет"}</td>
+            <td><a href="${post.link._text}" target="_blank">${post.link._text}</a></td>
+            <td>${new Date(post.pubDate._text).toLocaleString()}</td>
+            <td><img src="${post.enclosure._attributes.url}" class="table-image"></td>
+          </tr>
+        `
+      );
+    });
   }
 
   sortingByDate() {
@@ -163,7 +194,23 @@ class Posts {
       }
       this.posts = [...this.posts].sort((a, b) => new Date(a.pubDate._text).toLocaleString() > new Date(b.pubDate._text).toLocaleString() ? -1 : 1);
     }
-    this.iterationAnPosts();
+    while (tableBody.firstChild) {
+      tableBody.removeChild(tableBody.firstChild);
+    }
+    this.posts.forEach((post) => {
+
+      tableBody.insertAdjacentHTML(
+        "beforeend", `
+          <tr id="${post.id}">
+            <td>${post.title._text}</td>
+            <td>${post.description?._cdata ? post.description?._cdata : "Описания для поста нет"}</td>
+            <td><a href="${post.link._text}" target="_blank">${post.link._text}</a></td>
+            <td>${new Date(post.pubDate._text).toLocaleString()}</td>
+            <td><img src="${post.enclosure._attributes.url}" class="table-image"></td>
+          </tr>
+        `
+      );
+    });
   }
 }
 const posts = new Posts();
